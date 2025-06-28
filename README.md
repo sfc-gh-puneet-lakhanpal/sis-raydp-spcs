@@ -10,8 +10,6 @@ Once ready, just navigate to the URLs.
 
 RayDP (Ray Data Processing) enables running Apache Spark on Ray clusters, providing a unified framework for distributed data processing and machine learning workloads on Snowflake Snowpark Container Services.
 
-![Architecture](images/architecture.png?raw=true "Session")
-
 Mermaid.live visualization below:
 ```mermaid
 graph TB
