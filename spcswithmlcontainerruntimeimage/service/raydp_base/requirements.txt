@@ -1,0 +1,8 @@
+jupyterlab
+ipykernel
+jupyterlab-nvdashboard
+raydp==1.6.2
+pyspark[sql,mllib]==3.5.4
+delta-spark==3.3.2
+pyarrow==15.0.0
+ipywidgets

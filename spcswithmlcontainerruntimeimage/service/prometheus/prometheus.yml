@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+- job_name: 'ray'
+  file_sd_configs:
+  - files:
+    - '/raylogs/ray/prom_metrics_service_discovery.json'

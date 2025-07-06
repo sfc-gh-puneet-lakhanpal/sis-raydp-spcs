@@ -210,9 +210,6 @@ spec:
    -  name: notebook
       port: 8888
       public: true
-   -  name: applicationui
-      port: 4040
-      public: true
    -  name: api
       port: 8000
       public: true
@@ -315,9 +312,6 @@ spec:
    endpoints:
    -  name: notebook
       port: 8888
-      public: true
-   -  name: applicationui
-      port: 4040
       public: true
    -  name: api
       port: 8000
