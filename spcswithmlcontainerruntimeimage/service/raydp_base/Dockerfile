@@ -13,7 +13,6 @@ RUN apt-get install -y wget \
                 openjdk-17-jre \
                 openjdk-17-jdk-headless \
                 unzip
-
 RUN wget --no-verbose -O apache-spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
    && mkdir -p /opt/spark \
    && tar -xf apache-spark.tgz -C /opt/spark --strip-components=1 \

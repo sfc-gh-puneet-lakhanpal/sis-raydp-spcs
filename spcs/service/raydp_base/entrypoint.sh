@@ -10,6 +10,11 @@ export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zi
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
 export SPARK_LOCAL_IP="$eth0Ip"
 export SPARK_DRIVER_HOST="$eth0Ip"
+export RAY_ENABLE_RECORD_ACTOR_TASK_LOGGING=1
+export RAY_BACKEND_LOG_LEVEL=warning
+export HOST_IP="$eth0Ip"
+export NCCL_DEBUG=INFO
+export NCCL_SOCKET_IFNAME=eth0
 
 if [ "$WORKLOAD" == "rayhead" ];
 then
@@ -26,11 +31,6 @@ then
     export log_dir="/raylogs/ray"
     echo "Making log directory $log_dir..."
     mkdir -p $log_dir
-    export RAY_ENABLE_RECORD_ACTOR_TASK_LOGGING=1
-    export RAY_BACKEND_LOG_LEVEL=debug
-    export HOST_IP="$eth0Ip"
-    export NCCL_DEBUG=INFO
-    export NCCL_SOCKET_IFNAME=eth0
     export SPARK_DRIVER_MEMORY=4g
     export SPARK_EXECUTOR_MEMORY=2g
     export SPARK_EXECUTOR_CORES=2
@@ -45,12 +45,6 @@ then
         echo "Error: RAYDP_HEAD_ADDRESS not set"
         exit 1
     fi
-    export RAY_ENABLE_RECORD_ACTOR_TASK_LOGGING=1
-    export RAY_BACKEND_LOG_LEVEL=debug
-    export HOST_IP="$eth0Ip"
-    export NCCL_DEBUG=INFO
-    export NCCL_SOCKET_IFNAME=eth0
-    
     export SPARK_EXECUTOR_MEMORY=2g
     export SPARK_EXECUTOR_CORES=2
     
@@ -61,11 +55,6 @@ then
         echo "Error: RAYDP_HEAD_ADDRESS not set"
         exit 1
     fi
-    export RAY_ENABLE_RECORD_ACTOR_TASK_LOGGING=1
-    export RAY_BACKEND_LOG_LEVEL=debug
-    export HOST_IP="$eth0Ip"
-    export NCCL_DEBUG=INFO
-    export NCCL_SOCKET_IFNAME=eth0
     export SPARK_EXECUTOR_MEMORY=2g
     export SPARK_EXECUTOR_CORES=2
     ray start --node-ip-address="$eth0Ip" --disable-usage-stats --address=${RAYDP_HEAD_ADDRESS} --resources='{"custom_worker": 1}' --object-manager-port=8076 --node-manager-port=8077 --dashboard-agent-grpc-port=8079 --dashboard-agent-listen-port=8081 --metrics-export-port=8082 --block

@@ -14,3 +14,7 @@ ls @ray_artifacts/;
 get @ray_artifacts/ file:///Users/plakhanpal/Documents/git/sis-ray-setup/artifacts/;
 
 call get_raydp_cluster_config();
+
+remove @raydp_artifacts/opt/;
+
+ls @raydp_artifacts/opt/;

@@ -2,6 +2,7 @@ FROM nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
 ENV PYTHONHASHSEED=1
 ENV DAEMON_RUN=true
+ENV DEBIAN_FRONTEND=noninteractive
 ENV SPARK_VERSION=3.5.4
 ENV HADOOP_VERSION=3
 ENV SPARK_HOME=/opt/spark
@@ -25,10 +26,12 @@ RUN apt-get install -y build-essential \
                 libaio-dev \
                 python3-dev
 
+
 RUN wget --no-verbose -O apache-spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
    && mkdir -p /opt/spark \
    && tar -xf apache-spark.tgz -C /opt/spark --strip-components=1 \
    && rm apache-spark.tgz
+
 RUN mkdir -p $SPARK_HOME/logs
 RUN mkdir -p $SPARK_HOME/work
 RUN chmod g+w $SPARK_HOME/work

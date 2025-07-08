@@ -269,3 +269,4 @@ __pycache__/
 .ipynb_checkpoints/
 jupyterlab/
 spcswithmlcontainerruntimeimageandseparatejupyter/
+spcs/examples/snowflake.zip
